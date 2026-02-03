@@ -1,4 +1,12 @@
 {
+  "name": "neurofit-root",
+  "version": "1.0.0",
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "client-dev": "cd client && npm run dev",
+    "server-dev": "cd server && npm run dev",
+    "build": "cd client && npm run build"
+  },
   "dependencies": {
     "lucide-react": "^0.563.0"
   }
