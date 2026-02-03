@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ============================================
+   Global Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #F8FAFC;
+  color: #1F2937;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Custom Scrollbar
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4A90E2, #357ABD);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #357ABD, #4A90E2);
+}
+
+/* ============================================
+   Background Container
+   ============================================ */
+
+.app-background {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E0E7FF 0%, #EDE9FE 50%, #FCE7F3 100%);
+}
+
+/* ============================================
+   Auth Page
+   ============================================ */
+
+.auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #EBF4FF 0%, #E0E7FF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* ============================================
+   Dashboard Background
+   ============================================ */
+
+.dashboard-page {
+  min-height: 100vh;
+  background: #F8FAFC;
+}
+
+.page-header {
+  background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+}
+
+/* ============================================
+   Glass Card Effects
+   ============================================ */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+}
+
+.glass-card-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   Gradient Text
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #4A90E2, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-primary {
+  background: linear-gradient(135deg, #4A90E2, #357ABD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+
+.btn {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 ease-in-out inline-flex items-center gap-2 justify-center;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105;
+}
+
+.btn-success {
+  @apply bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg hover:shadow-xl hover:scale-105;
+}
+
+.btn-danger {
+  @apply bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg hover:shadow-xl hover:scale-105;
+}
+
+.btn-outline {
+  @apply border-2 border-blue-500 bg-white text-blue-500 hover:bg-blue-500 hover:text-white shadow-md hover:shadow-lg;
+}
+
+.btn-sm {
+  @apply px-4 py-2 text-sm;
+}
+
+.btn-lg {
+  @apply px-8 py-4 text-lg;
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+
+.form-input {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white;
+}
+
+.form-label {
+  @apply block mb-2 font-semibold text-gray-700 text-sm;
+}
+
+.form-select {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 bg-white;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 resize-y min-h-[120px] bg-white;
+}
+
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled {
+  @apply bg-gray-100 cursor-not-allowed;
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+
+.card {
+  @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100;
+}
+
+.card-hover {
+  @apply hover:-translate-y-1;
+}
+
+/* ============================================
+   Stats Cards
+   ============================================ */
+
+.stat-card {
+  @apply bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100;
+}
+
+.stat-icon {
+  @apply w-14 h-14 rounded-xl flex items-center justify-center text-2xl shadow-md;
+}
+
+.stat-icon-blue {
+  @apply bg-gradient-to-br from-blue-500 to-blue-600 text-white;
+}
+
+.stat-icon-green {
+  @apply bg-gradient-to-br from-green-500 to-green-600 text-white;
+}
+
+.stat-icon-orange {
+  @apply bg-gradient-to-br from-orange-500 to-orange-600 text-white;
+}
+
+.stat-icon-purple {
+  @apply bg-gradient-to-br from-purple-500 to-purple-600 text-white;
+}
+
+.stat-icon-red {
+  @apply bg-gradient-to-br from-red-500 to-red-600 text-white;
+}
+
+.stat-icon-teal {
+  @apply bg-gradient-to-br from-teal-500 to-teal-600 text-white;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.stat-label {
+  @apply text-sm text-gray-600 font-medium;
+}
+
+/* ============================================
+   Loading Spinner
+   ============================================ */
+
+.spinner {
+  border: 4px solid #E5E7EB;
+  border-radius: 50%;
+  border-top: 4px solid #4A90E2;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* ============================================
+   Modal Overlay
+   ============================================ */
+
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   Sidebar
+   ============================================ */
+
+.sidebar {
+  @apply fixed left-0 top-0 h-screen w-72 bg-white shadow-2xl z-50 border-r border-gray-100;
+}
+
+.sidebar-logo {
+  @apply flex items-center gap-3 mb-8 pb-6 border-b-2 border-gray-100;
+}
+
+.sidebar-logo-icon {
+  @apply w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center text-white text-2xl font-bold shadow-lg;
+}
+
+.sidebar-logo-text {
+  @apply text-2xl font-bold gradient-text;
+}
+
+.sidebar-nav {
+  @apply flex flex-col gap-2;
+}
+
+.nav-item {
+  @apply flex items-center gap-4 px-5 py-3.5 rounded-xl text-gray-700 font-medium transition-all duration-300 hover:bg-blue-50 hover:text-blue-600;
+}
+
+.nav-item.active {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg;
+}
+
+.nav-item-icon {
+  @apply text-xl;
+}
+
+/* ============================================
+   Page Container
+   ============================================ */
+
+.main-content {
+  @apply ml-0 lg:ml-72 min-h-screen p-6 lg:p-8;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+.section-padding {
+  @apply py-8 px-4;
+}
+
+/* ============================================
+   Badge
+   ============================================ */
+
+.badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.badge-blue {
+  @apply bg-blue-100 text-blue-700;
+}
+
+.badge-green {
+  @apply bg-green-100 text-green-700;
+}
+
+.badge-orange {
+  @apply bg-orange-100 text-orange-700;
+}
+
+.badge-red {
+  @apply bg-red-100 text-red-700;
+}
+
+.badge-purple {
+  @apply bg-purple-100 text-purple-700;
+}
+
+.badge-yellow {
+  @apply bg-yellow-100 text-yellow-700;
+}
+
+/* ============================================
+   Alert
+   ============================================ */
+
+.alert {
+  @apply p-4 rounded-xl border-l-4;
+}
+
+.alert-info {
+  @apply bg-blue-50 border-blue-500 text-blue-800;
+}
+
+.alert-success {
+  @apply bg-green-50 border-green-500 text-green-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 border-yellow-500 text-yellow-800;
+}
+
+.alert-error {
+  @apply bg-red-50 border-red-500 text-red-800;
+}
+
+/* ============================================
+   Progress Bar
+   ============================================ */
+
+.progress-bar {
+  @apply w-full h-3 bg-gray-200 rounded-full overflow-hidden;
+}
+
+.progress-bar-fill {
+  @apply h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500 ease-out;
+}
+
+/* ============================================
+   Divider
+   ============================================ */
+
+.divider {
+  @apply border-t-2 border-gray-100 my-6;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+
+.empty-state {
+  @apply text-center py-16;
+}
+
+.empty-state-icon {
+  @apply w-24 h-24 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center text-5xl;
+}
+
+.empty-state-title {
+  @apply text-2xl font-bold text-gray-900 mb-2;
+}
+
+.empty-state-description {
+  @apply text-gray-600 mb-6;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    @apply -translate-x-full transition-transform duration-300;
+  }
+
+  .sidebar.open {
+    @apply translate-x-0;
+  }
+
+  .main-content {
+    @apply ml-0;
+  }
+
+  .stat-card {
+    @apply p-4;
+  }
+
+  .card {
+    @apply p-4;
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+/* ============================================
+   Special Effects
+   ============================================ */
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.shine-effect:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
