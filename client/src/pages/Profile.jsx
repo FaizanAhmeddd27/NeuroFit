@@ -4,7 +4,7 @@ import { IoPencil, IoLockClosed } from 'react-icons/io5';
 import Sidebar from '../components/common/Sidebar';
 import Navbar from '../components/common/Navbar';
 import Modal from '../components/common/Modal';
-import ProfileInfo from '../components/profile/profileInfo';
+import ProfileInfo from '../components/profile/ProfileInfo';
 import ProfileEdit from '../components/profile/ProfileEdit';
 import PasswordChange from '../components/profile/PasswordChange';
 import AccountStats from '../components/profile/AccountStats';
