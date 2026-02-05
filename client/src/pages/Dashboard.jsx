@@ -43,12 +43,13 @@ const Dashboard = () => {
           <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
             <Sidebar />
 
-            <main className="main-content">
-              <div className="container-custom">
+            {/* Main Content - Adjusted for sidebar */}
+            <main className="lg:ml-72 min-h-screen">
+              <div className="p-4 sm:p-6 lg:p-8 pt-16 lg:pt-6">
                 <Navbar title="Dashboard" />
 
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                {/* Stats Grid - Responsive */}
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
                   <StatsCard
                     title="Total Workouts"
                     value={dashboardData?.stats?.totalWorkouts || 0}
@@ -82,8 +83,8 @@ const Dashboard = () => {
                   />
                 </div>
 
-                {/* Charts Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                {/* Charts Row - Stack on mobile */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                   <WorkoutChart data={dashboardData?.charts?.workoutProgress || []} />
                   <CalorieChart
                     data={dashboardData?.charts?.calorieProgress || []}
@@ -91,66 +92,77 @@ const Dashboard = () => {
                   />
                 </div>
 
-                {/* Nutrition Summary */}
+                {/* Nutrition Summary - Responsive */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-white rounded-2xl p-6 shadow-custom-md mb-6 border border-gray-100"
+                  className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-custom-md mb-4 sm:mb-6 border border-gray-100"
                 >
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-2">
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-1">
                         Today's Nutrition Summary
                       </h3>
-                      <p className="text-sm text-gray-600">Track your macronutrient intake</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Track your macronutrient intake</p>
                     </div>
-                    <div className="px-4 py-2 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100 hidden sm:block">
+                    <div className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl border border-blue-100">
                       <p className="text-xs font-bold text-blue-600 uppercase">Daily Goal</p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  
+                  {/* Nutrition Cards - 2x2 on mobile, 4 cols on desktop */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="text-center p-5 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl border border-red-100"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-center p-3 sm:p-5 bg-gradient-to-br from-red-50 to-orange-50 rounded-lg sm:rounded-xl border border-red-100"
                     >
-                      <IoFlame className="w-10 h-10 mx-auto mb-3 text-red-500" />
-                      <p className="text-3xl font-bold text-gray-900">
+                      <IoFlame className="w-6 h-6 sm:w-10 sm:h-10 mx-auto mb-2 sm:mb-3 text-red-500" />
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
                         {dashboardData?.todayNutrition?.calories || 0}
                       </p>
-                      <p className="text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">
+                      <p className="text-[10px] sm:text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">
                         / {dashboardData?.user?.dailyCalorieGoal || 2000} kcal
                       </p>
                     </motion.div>
+                    
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="text-center p-5 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl border border-blue-100"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-center p-3 sm:p-5 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-lg sm:rounded-xl border border-blue-100"
                     >
-                      <p className="text-3xl font-bold text-blue-600">
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">
                         {dashboardData?.todayNutrition?.protein || 0}g
                       </p>
-                      <p className="text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Protein</p>
+                      <p className="text-[10px] sm:text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Protein</p>
                     </motion.div>
+                    
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="text-center p-5 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-100"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-center p-3 sm:p-5 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg sm:rounded-xl border border-green-100"
                     >
-                      <p className="text-3xl font-bold text-green-600">
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600">
                         {dashboardData?.todayNutrition?.carbohydrates || 0}g
                       </p>
-                      <p className="text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Carbs</p>
+                      <p className="text-[10px] sm:text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Carbs</p>
                     </motion.div>
+                    
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className="text-center p-5 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-xl border border-yellow-100"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="text-center p-3 sm:p-5 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg sm:rounded-xl border border-yellow-100"
                     >
-                      <p className="text-3xl font-bold text-yellow-600">
+                      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-600">
                         {dashboardData?.todayNutrition?.fat || 0}g
                       </p>
-                      <p className="text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Fat</p>
+                      <p className="text-[10px] sm:text-xs text-gray-600 font-semibold uppercase tracking-wide mt-1">Fat</p>
                     </motion.div>
                   </div>
-                  <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
-                    <p className="text-sm font-semibold text-gray-700 text-center">
+                  
+                  {/* Remaining Calories */}
+                  <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg sm:rounded-xl border border-blue-100">
+                    <p className="text-xs sm:text-sm font-semibold text-gray-700 text-center">
                       <strong className="text-blue-600">Remaining:</strong>{' '}
                       {dashboardData?.todayNutrition?.remaining || 0} kcal
                     </p>
